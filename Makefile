@@ -1,9 +1,10 @@
 entry=src/index.mts
 banner=banner.js
 tsconfig=tsconfig.json
-target=bundle.cjs
+outDir=dist/
+target=$(outDir)index.cjs
 
-$(target): Makefile src/*.mts
+$(target): src/*.mts
 	@esbuild \
 		$(entry) \
 		--outfile=$(target) \
@@ -11,10 +12,12 @@ $(target): Makefile src/*.mts
 		--charset=utf8 \
 		--format=cjs \
 		--minify=false \
-		--tree-shaking=false \
 		--tsconfig=$(tsconfig) \
 		--banner:js="$$(cat $(banner))" \
 	;
+
+$(outDir):
+	mkdir $(outDir);
 
 clean:
 	@rm -f $(target);
