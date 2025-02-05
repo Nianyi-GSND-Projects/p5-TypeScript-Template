@@ -10,3 +10,5 @@ declare global {
 		draw(): void;
 	}
 }
+
+export { Vector } from './vector.mts';

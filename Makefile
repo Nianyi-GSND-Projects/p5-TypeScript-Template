@@ -21,3 +21,6 @@ $(outDir):
 
 clean:
 	@rm -f $(target);
+
+dev:
+	npx vite;
